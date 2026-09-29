@@ -1,0 +1,35 @@
+{
+  "name": "com.tomgit473.unity-urdf-importer",
+  "version": "1.1.0",
+  "displayName": "Universal URDF Robot & Rover Importer",
+  "description": "Zero-configuration, fully standalone URDF importer, CAD mesh & material auto-healer, and physics auto-configurator for Unity. Transforms raw URDF robots into physics-stabilized, drivable rovers (2, 4, 6, 8+ wheels, Rocker-Bogie, Ackermann steering) and articulated legged robots (quadrupeds, arms).",
+  "unity": "2021.3",
+  "author": {
+    "name": "Tomgit473",
+    "url": "https://github.com/Tomgit473"
+  },
+  "dependencies": {
+    "com.unity.editorcoroutines": "1.0.0"
+  },
+  "keywords": [
+    "urdf",
+    "rover",
+    "robotics",
+    "articulationbody",
+    "physx",
+    "importer",
+    "rocker-bogie",
+    "husky",
+    "perseverance",
+    "curiosity",
+    "quadruped",
+    "unitree"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tomgit473/unity-urdf-importer.git"
+  },
+  "documentationUrl": "https://github.com/Tomgit473/unity-urdf-importer#readme",
+  "changelogUrl": "https://github.com/Tomgit473/unity-urdf-importer/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/Tomgit473/unity-urdf-importer/blob/main/LICENSE.md"
+}

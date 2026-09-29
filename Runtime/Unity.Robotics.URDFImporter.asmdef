@@ -1,0 +1,16 @@
+{
+    "name": "Unity.Robotics.UrdfImporter",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6a697808d7c80a549b57420070d6c4f3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
