@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -14,7 +14,7 @@ namespace RoverCompatibility.Editor
     ///    This interceptor ensures scene selection is cleared whenever a URDF import begins.
     /// 2. Missing Mesh / Coroutine Crash Trap: Auto-heals relative '../' mesh paths, formats, and bakes
     ///    prefabs before the official importer runs, preventing "Could not find file" exceptions.
-    /// 3. Top-Priority Menu: Places "🚀 Import Drivable Rover" at priority -100 so it appears at the
+    /// 3. Top-Priority Menu: Places "\U0001F680 Import Drivable Rover" at priority -100 so it appears at the
     ///    very top of the Project context menu.
     /// </summary>
     [InitializeOnLoad]
@@ -27,7 +27,7 @@ namespace RoverCompatibility.Editor
             EditorApplication.update += MonitorOfficialImportMenu;
         }
 
-        [MenuItem("Assets/Import Robot (URDF)", true, 18)]
+        [MenuItem("Assets/\U0001F680 Import Drivable Rover", true, -100)]
         public static bool ValidateTopLevelImportRover()
         {
             if (Selection.activeObject == null) return false;
@@ -42,12 +42,28 @@ namespace RoverCompatibility.Editor
             return false;
         }
 
-        [MenuItem("Assets/Import Robot (URDF)", false, 18)]
+        [MenuItem("Assets/\U0001F680 Import Drivable Rover", false, -100)]
         public static void TopLevelImportRover()
         {
             if (Selection.activeObject == null) return;
             string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
-            if (!assetPath.EndsWith(".urdf", StringComparison.OrdinalIgnoreCase) && !assetPath.EndsWith(".zip", StringComparison.OrdinalIgnoreCase)) return;
+            if (string.IsNullOrEmpty(assetPath)) return;
+
+            if (!assetPath.EndsWith(".urdf", StringComparison.OrdinalIgnoreCase) && !assetPath.EndsWith(".zip", StringComparison.OrdinalIgnoreCase))
+            {
+                if (Directory.Exists(assetPath))
+                {
+                    var urdfs = Directory.GetFiles(assetPath, "*.urdf", SearchOption.AllDirectories);
+                    if (urdfs.Length > 0) assetPath = urdfs[0];
+                    else
+                    {
+                        var zips = Directory.GetFiles(assetPath, "*.zip", SearchOption.AllDirectories);
+                        if (zips.Length > 0) assetPath = zips[0];
+                        else return;
+                    }
+                }
+                else return;
+            }
 
             // Clear active scene selection so the robot is NEVER parented under a scene object
             Selection.activeObject = null;

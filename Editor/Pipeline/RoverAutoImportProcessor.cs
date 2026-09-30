@@ -171,8 +171,7 @@ namespace RoverCompatibility.Editor
             }
 
             return bestRoot != null ? bestRoot.gameObject : go;
-        }
-
+        }        [MenuItem("Tools/Rover Compatibility/Configure Selected Robot", false, 20)]
         [MenuItem("Tools/URDF Importer/Configure Selected Robot", false, 20)]
         private static void ConfigureSelected()
         {
@@ -193,8 +192,7 @@ namespace RoverCompatibility.Editor
 
             GameObject targetRoot = go.transform.root.gameObject;
             RoverAutoConfigurator.Configure(targetRoot);
-        }
-
+        }        [MenuItem("GameObject/Rover Compatibility/Configure as Rover", false, 10)]
         [MenuItem("GameObject/URDF Importer/Configure Selected Robot", false, 10)]
         private static void ContextMenuConfigure(MenuCommand command)
         {

@@ -7,7 +7,7 @@ using Unity.Robotics.UrdfImporter;
 namespace RoverCompatibility.Editor
 {
     public static class RoverContextMenuImporter
-    {
+    {        [MenuItem("Assets/Rover Compatibility/Fix & Import Drivable Rover", true, 20)]
         [MenuItem("Assets/URDF Importer/Import and Configure Robot", true, 20)]
         public static bool ValidateImportRover()
         {
@@ -20,8 +20,7 @@ namespace RoverCompatibility.Editor
                        Directory.GetFiles(path, "*.zip", SearchOption.AllDirectories).Length > 0;
             }
             return false;
-        }
-
+        }        [MenuItem("Assets/Rover Compatibility/Fix & Import Drivable Rover", false, 20)]
         [MenuItem("Assets/URDF Importer/Import and Configure Robot", false, 20)]
         public static void ImportSelectedRover()
         {
